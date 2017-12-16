@@ -56,8 +56,8 @@ def main(author_name):
             journal = record.get('TA','?')
             if ( journal == "Nature" or journal == "Science" or journal == "Cell" ):
                 NSC = NSC + 1
-            #print record
-        #print('Titles: {0}'.format('; '.join(titles)))
+            print record
+
         #r = Rake("SmartStoplist.txt", 3, 3, 2) 
         Rake = RAKE.Rake(RAKE.SmartStopList())
             #r = Rake(<language>)
@@ -71,7 +71,7 @@ def main(author_name):
             if ( count_keywords >= 12 ):
                 break
     
-        print name+"\t"+n_publications+"\t"+str(NSC)+"\t"+"\""+", ".join(keywords_list)+"\""
+        #print name+"\t"+n_publications+"\t"+str(NSC)+"\t"+"\""+", ".join(keywords_list)+"\""
     
     return
 
