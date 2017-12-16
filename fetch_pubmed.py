@@ -49,9 +49,14 @@ def main(author_name):
         records = Medline.parse(h)
     
         titles = []
+        NSC = 0
         for record in records:
             abstract = record.get('AB', '?')
             titles.append(abstract)
+            journal = record.get('TA','?')
+            if ( journal == "Nature" or journal == "Science" or journal == "Cell" ):
+                NSC = NSC + 1
+            #print record
         #print('Titles: {0}'.format('; '.join(titles)))
         #r = Rake("SmartStoplist.txt", 3, 3, 2) 
         Rake = RAKE.Rake(RAKE.SmartStopList())
@@ -66,7 +71,7 @@ def main(author_name):
             if ( count_keywords >= 12 ):
                 break
     
-        print name+" "+n_publications+" \""+", ".join(keywords_list)+"\""
+        print name+"\t"+n_publications+"\t"+str(NSC)+"\t"+"\""+", ".join(keywords_list)+"\""
     
     return
 
